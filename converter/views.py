@@ -11,7 +11,7 @@ from .utils import *
 # import winsound
 import time
  
- 
+from accounts.models import Gaze
 
 
 # Create your views here.
@@ -48,7 +48,10 @@ def homepage(request):
     # Mera trial
     last_col = False
     sec = 0
-    password = ["2","2","3","1"]
+    gaze = Gaze.objects.filter(user=request.user)
+    gazePassword = gaze.gaze
+    password = gazePassword.split("")
+    # password = ["2","2","3","1"]
     step_chances = 2
     retry_chances = 3
     
@@ -375,6 +378,6 @@ def homepage(request):
         key=cv2.waitKey(10)
         if key==ord('q'):
             break
-        cv2.destroyAllWindows()
+    cv2.destroyAllWindows()
     
 
