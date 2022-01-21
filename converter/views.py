@@ -48,9 +48,11 @@ def homepage(request):
     # Mera trial
     last_col = False
     sec = 0
-    gaze = Gaze.objects.filter(user=request.user)
-    gazePassword = gaze.gaze
-    password = gazePassword.split("")
+    gazes = Gaze.objects.get(user=request.user)
+    gazePassword = gazes.gazePassword
+
+
+    password = gazePassword
     # password = ["2","2","3","1"]
     step_chances = 2
     retry_chances = 3
