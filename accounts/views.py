@@ -23,7 +23,7 @@ def register(request):
         newUser = User.objects.create_user(username = username, password = password, first_name = fname,last_name = lname, email = email)
         newUser.save()
 
-        newGaze = Gaze.objects.create(user=newUser, gaze = gazePassword)
+        newGaze = Gaze.objects.create(user=newUser, gazePassword = gazePassword)
         newGaze.save()
 
         return redirect('/login')

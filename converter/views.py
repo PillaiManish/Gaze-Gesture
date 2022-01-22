@@ -160,6 +160,11 @@ def homepage(request):
 
                 if password[step] == valueByRange(selected, key_set):
                     main_windows = np.zeros((780,1000,3),np.uint8)
+
+                    if step == 3:
+                        cv2.destroyAllWindows()
+
+                        return HttpResponse("Sir ji, aap too logged in hooo")
                     cv2.putText(main_windows,"------PRESS C for next step------",(375,325), font_letter,1, (0,0,255),2)
                     step +=1
                     print("Huuray we are close again VAMS")
